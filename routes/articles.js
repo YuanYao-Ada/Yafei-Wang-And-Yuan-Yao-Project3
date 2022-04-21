@@ -15,6 +15,17 @@ router.get('/', function(request, response) {
     })
 });
 
+router.get('/:articleId', function(request, response) {
+    const articleId = request.params.articleId;
+    return ArticleModel.getArticleById(articleId)
+    .then(article => {
+        response.status(200).send(article);
+    })
+    .catch(err => {
+        response.status(400).send(err)
+    })
+});
+
 router.post('/', function(request, response) {
     const title = request.body.title;
     const description = request.body.description;
@@ -31,6 +42,21 @@ router.post('/', function(request, response) {
     return ArticleModel.createArticle(article)
     .then(dbResponse => {
         response.status(200).send(dbResponse)
+    })
+    .catch(err => {
+        response.send(400).send(err)
+    })
+});
+
+router.delete('/:articleId', function(request, response) {
+    const articleId = request.params.articleId;
+    const article = {
+        _id: articleId,
+    }
+
+    return ArticleModel.deleteArticle(article)
+    .then(dbResponse => {
+        response.status(200).send("Deleted")
     })
     .catch(err => {
         response.send(400).send(err)

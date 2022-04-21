@@ -12,7 +12,17 @@ function getAllArticles() {
     return ArticleModel.find().exec();
 }
 
+function deleteArticle(article) {
+    return ArticleModel.findOneAndDelete(article).exec();
+}
+
+function getArticleById(id) {
+    return ArticleModel.findById(id).exec();
+}
+
 module.exports = {
     createArticle,
     getAllArticles,
+    deleteArticle,
+    getArticleById,
 }

@@ -7,12 +7,14 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.1",
+    "bootstrap": "^4.6.1",
     "concurrently": "^7.1.0",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.3.0",
     "react": "^18.0.0",
+    "react-bootstrap": "^2.3.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -20,13 +22,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "devstart": "concurrently \"nodemon ./server.js\" \"react-scripts start\"",
+    "devstart": "concurrently \"nodemon ./server.js --ingnore client\" \"react-scripts start\"",
     "start": "node ./server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:8000",
+  "proxy": "http://127.0.0.1:8000",
   "eslintConfig": {
     "extends": [
       "react-app",
