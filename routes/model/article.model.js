@@ -20,9 +20,18 @@ function getArticleById(id) {
     return ArticleModel.findById(id).exec();
 }
 
+function updateArticleById(article, newArticle) {
+    return ArticleModel.findOneAndUpdate(
+        article,
+        newArticle,
+        {new: true}
+    );
+}
+
 module.exports = {
     createArticle,
     getAllArticles,
     deleteArticle,
     getArticleById,
+    updateArticleById,
 }

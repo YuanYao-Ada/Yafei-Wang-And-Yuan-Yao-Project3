@@ -33,16 +33,6 @@ function App() {
     })
   }
 
-  function deleteArticle(articleId) {
-    Axios.delete('/articles/' + articleId)
-    .then(function(response) {
-      getArticles();
-    })
-    .catch(function(err) {
-      console.log(err);
-    })
-}
-
   useEffect(getArticles, []);
 
   return (

@@ -63,6 +63,30 @@ router.delete('/:articleId', function(request, response) {
     })
 });
 
+router.put('/:articleId', function(request, response) {
+    const articleId = request.params.articleId;
+    const article = {
+        _id: articleId,
+    }
+
+    const title = request.body.title;
+    const description = request.body.description;
+    if (description) {
+        const newArticle = {
+            title: title,
+            description: description,
+        }
+        return ArticleModel.updateArticleById(article, newArticle)
+        .then(dbResponse => {
+            response.status(200).send(dbResponse);
+        })
+        .catch(err => {
+            response.send(400).send(err);
+        })
+    }
+    return response.send(400).send("Error occurs");
+})
+
 
 module.exports = router;
 

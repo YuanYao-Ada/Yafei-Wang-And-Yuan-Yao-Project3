@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ArticleEntry from './components/ArticleEntry';
+import ArticleEdit from './components/ArticleEdit';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
       <Routes>
         <Route path={"/articles"} element={<App />} />
         <Route path={"/articles/:articleId"} element={<ArticleEntry />} />
+        <Route path={"/articles/edit/:articleId"} element={<ArticleEdit />} />
       </Routes>
     </BrowserRouter>
   </div>

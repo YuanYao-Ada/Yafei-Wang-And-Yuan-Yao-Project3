@@ -21,10 +21,22 @@ export default function ArticleEntry() {
         </div>)
     }
 
+    function deleteArticle() {
+        Axios.delete('/articles/' + params.articleId)
+        .then(function(response) {
+            setArticle('');
+        })
+    }
+
     return (
         <div>
             <ArticleCard article={article} />
-            <Button> Delete the article </Button>
+            <a href={"/articles/edit/" + article._id}>
+                <Button>Edit</Button>
+            </a>
+            <a href={"/articles/"}>
+                <Button onClick={() => deleteArticle()}> Delete </Button>
+            </a>
         </div>
     )
 }

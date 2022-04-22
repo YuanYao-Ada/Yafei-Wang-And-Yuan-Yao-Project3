@@ -17,6 +17,8 @@ export default function ArticleCards(props) {
       )
     }
 
+    articleComponent.reverse();
+
     return (
         <div>
             {articleComponent}
