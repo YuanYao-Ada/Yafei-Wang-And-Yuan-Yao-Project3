@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <Form>
           <Form.Group className="mb-3">
             <Form.Label>Title</Form.Label>
@@ -55,7 +55,7 @@ function App() {
             Add new Article
           </Button>
         </Form>
-      </div>
+      </div> */}
       <ArticleCards articles={articles} />
     </div>
   );

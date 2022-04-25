@@ -1,4 +1,5 @@
 const express = require('express')
+const auth_middleware = require('./middleware/auth_middleware');
 
 const ArticleModel = require('./model/article.model')
 
@@ -15,6 +16,18 @@ router.get('/', function(request, response) {
     })
 });
 
+router.get('/', auth_middleware, function(request, response) {
+    const username = request.username;
+
+    return ArticleModel.getArticleByUsername(username)
+    .then(allArticles => {
+        response.status(200).send(allArticles)
+    })
+    .catch(err => {
+        response.status(400).send(error)
+    })
+});
+
 router.get('/:articleId', function(request, response) {
     const articleId = request.params.articleId;
     return ArticleModel.getArticleById(articleId)
@@ -26,7 +39,8 @@ router.get('/:articleId', function(request, response) {
     })
 });
 
-router.post('/', function(request, response) {
+router.post('/', auth_middleware, function(request, response) {
+    const username = request.username;
     const title = request.body.title;
     const description = request.body.description;
 
@@ -35,6 +49,7 @@ router.post('/', function(request, response) {
     }
 
     const article = {
+        username: username,
         title: title,
         description: description,
     }

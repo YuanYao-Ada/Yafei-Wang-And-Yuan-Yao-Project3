@@ -12,6 +12,12 @@ function getAllArticles() {
     return ArticleModel.find().exec();
 }
 
+function getArticleByUsername(username) {
+    return ArticleModel.find({
+        username: username
+    }).exec();
+}
+
 function deleteArticle(article) {
     return ArticleModel.findOneAndDelete(article).exec();
 }
@@ -34,4 +40,5 @@ module.exports = {
     deleteArticle,
     getArticleById,
     updateArticleById,
+    getArticleByUsername,
 }

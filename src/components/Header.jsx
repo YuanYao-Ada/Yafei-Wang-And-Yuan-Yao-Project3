@@ -46,6 +46,7 @@ export default function Header() {
                 </Navbar.Brand>
                 <Form inline className='mx-3'>
                     <span>{username}  </span>
+                    <Button as={Link} to="/createArticle">Create Article</Button>
                     <Button variant='secondary' onClick={() => logout()}>Logout</Button>
                 </Form>
             </Navbar>  
