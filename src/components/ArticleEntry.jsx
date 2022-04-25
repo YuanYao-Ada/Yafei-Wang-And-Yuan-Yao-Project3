@@ -34,7 +34,7 @@ export default function ArticleEntry() {
             <a href={"/articles/edit/" + article._id}>
                 <Button>Edit</Button>
             </a>
-            <a href={"/articles/"}>
+            <a href={"/"}>
                 <Button onClick={() => deleteArticle()}> Delete </Button>
             </a>
         </div>
