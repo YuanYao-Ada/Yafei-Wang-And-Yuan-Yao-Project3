@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useNavigate } from 'react-router';
 import { Link } from "react-router-dom";
+import { useParams  } from "react-router-dom";
 
 export default function CreateReview() {
     const [newRatingInput, setNewRatingInput] = useState('');
     const [newDesInput, setNewDesInput] = useState('');
+    const [username, setUsername] = useState(undefined);
+    const params = useParams();
     const navigate = useNavigate();
 
     function createNewReview() {
         if (!newRatingInput) return;
 
         Axios.post('/articles/' + params.articleId + '/reviews', {
-        rating: newRatingInput,
-        description: newDesInput,
+            username: username,
+            rating: newRatingInput,
+            description: newDesInput,
         })
         .then(function(response) {
         setNewRatingInput('');
@@ -24,6 +28,12 @@ export default function CreateReview() {
         console.log(err);
         })
     }
+
+    useEffect(()=> { 
+        Axios.get('/api/user/isLoggedIn')
+        .then(response => setUsername(response.data.username))
+        .catch(error => console.log("User is not logged in"));
+    }, []);
 
     return (
         <div>
@@ -40,9 +50,10 @@ export default function CreateReview() {
                                 value={newDesInput}
                                 onChange={ e => setNewDesInput(e.target.value)} />
                 </Form.Group>
-                <Button onClick={createNewReview} as={Link} to='/params.articleId' >
-                    Add new Review
-                </Button>
+                    <Button onClick={createNewReview} as={Link} to={'/articles/' + params.articleId} >
+                        Add new Review
+                    </Button>
+
             </Form>
         </div>
     );

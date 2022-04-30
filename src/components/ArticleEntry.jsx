@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ArticleCard from './ArticleCard';
+import ReviewCards from './ReviewCards';
 import { Button } from 'react-bootstrap';
 
 export default function ArticleEntry() {
@@ -19,12 +20,23 @@ export default function ArticleEntry() {
         .catch(error => console.log("User is not logged in"));
     }, []);
 
+    const [reviews, setReviews] = useState('');
+    
+    function getReviews() {
+        Axios.get("/articles/" + params.articleId + '/reviews')
+        .then(function(response) {
+            setReviews(response.data);
+        })
+    }
+    
+    useEffect(getReviews, []);
+
     if (!article) {
         return (<div>
             Article loading ...
         </div>)
     }
-
+    
     function deleteArticle() {
         Axios.delete('/articles/' + params.articleId)
         .then(function(response) {
@@ -42,6 +54,14 @@ export default function ArticleEntry() {
                 <a href={"/"}>
                     <Button onClick={() => deleteArticle()}> Delete </Button>
                 </a>
+                <div>
+                    <a href={"/articles/" + article._id + "/createReview"}>
+                        <Button> Create a Review </Button>
+                    </a>
+                    <ReviewCards reviews={reviews} />
+                </div>
+                
+
             </div>
         )
     } else {
@@ -50,3 +70,4 @@ export default function ArticleEntry() {
         )
     }
 }
+

@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 export default function ArticleCard(props) {
     const article = props.article;
-    // const review = props.review
+
     return (
         <div className="article-card">
             <Card>
