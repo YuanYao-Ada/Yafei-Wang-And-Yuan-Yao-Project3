@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 
 export default function ArticleCard(props) {
     const article = props.article;
-    const review = props.review
+    // const review = props.review
     return (
         <div className="article-card">
             <Card>
@@ -13,13 +13,13 @@ export default function ArticleCard(props) {
                     <Card.Text>{article.description}</Card.Text>
                 </Card.Body>
             </Card>
-            <Card>
+            {/* <Card>
             <Card.Header>ID: {review._id} </Card.Header>
             <Card.Body>
                     <Card.Title>{review.username} Rating: {review.rating}</Card.Title>
                     <Card.Text>{review.description}</Card.Text>
                 </Card.Body>
-            </Card>
+            </Card> */}
         </div>
     )
 }
