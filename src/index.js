@@ -10,8 +10,10 @@ import ArticleEdit from './components/ArticleEdit';
 import Login from './components/Login';
 import Header from './components/Header';
 import CreateUser from './components/CreateUser';
-import CreateArctile from './components/CreateArticle';
 import CreateArticle from './components/CreateArticle';
+import CreateReview from './components/CreateReview';
+import ReviewEdit from './components/ReviewEdit';
+import ReviewEntry from './components/ReviewEntry';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +27,9 @@ root.render(
         <Route path={"/login"} element={<Login />} />
         <Route path={"/createUser"} element={<CreateUser />} />
         <Route path={"/createArticle"} element={<CreateArticle />} />
+        <Route path={"/articles/:articleId/reviews/:reviewId"} element={<ReviewEntry />} />
+        <Route path={"/articles/:articleId/createReview"} element={<CreateReview />} />
+        <Route path={"/articles/:articleId/edit/:reviewId"} element={<ReviewEdit />} />
       </Routes>
     </BrowserRouter>
   </div>

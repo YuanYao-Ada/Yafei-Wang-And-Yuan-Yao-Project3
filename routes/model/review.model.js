@@ -2,24 +2,30 @@ const mongoose = require('mongoose');
 
 const reviewSchema = require('../schema/review.schema');
 
-const reviewModel = mongoose.model("Review", reviewSchema);
+const ReviewModel = mongoose.model("Review", reviewSchema);
 
 function createReview(review) {
-    return reviewModel.create(review);
+    return ReviewModel.create(review);
 }
 
-function getReviewByArticleId(article) {
+function getReviewsByArticleId(articleId) {
     return ReviewModel.find({
-        article: article
+        articleId: articleId
+    }).exec();
+}
+
+function getReviewByReviewId(reviewId) {
+    return ReviewModel.find({
+        _id: reviewId
     }).exec();
 }
 
 function deleteReviewByReviewId(reviewId) {
-    return reviewModel.findByIdAndDelete(reviewId).exec()
+    return ReviewModel.findByIdAndDelete(reviewId).exec()
 }
 
 function updateReviewByReviewId(review, newReview) {
-    return reviewModel.findOneAndUpdate(
+    return ReviewModel.findOneAndUpdate(
         review,
         newReview,
         {new: true}
@@ -30,6 +36,7 @@ function updateReviewByReviewId(review, newReview) {
 module.exports = {
     createReview,
     deleteReviewByReviewId,
-    getReviewByArticleId,
-    updateReviewByReviewId
+    getReviewsByArticleId,
+    updateReviewByReviewId,
+    getReviewByReviewId
 }

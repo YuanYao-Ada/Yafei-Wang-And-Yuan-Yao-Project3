@@ -2,7 +2,7 @@ const express = require('express')
 const auth_middleware = require('./middleware/auth_middleware');
 
 const ArticleModel = require('./model/article.model')
-const reviewModel = require('./model/review.model')
+const ReviewModel = require('./model/review.model')
 
 const router = express.Router()
 
@@ -79,7 +79,7 @@ router.post('/:articleId/reviews', function(request, response) {
         rating: rating
     }
 
-    return reviewModel.createReview(review)
+    return ReviewModel.createReview(review)
     .then(dbResponse => {
         response.status(200).send(dbResponse)
     })
@@ -92,7 +92,7 @@ router.post('/:articleId/reviews', function(request, response) {
 // todo: add auth_middleware
 router.delete('/:articleId/reviews/:reviewId', function(request, response) {
     // ArticleModel.getArticleById(request.params.articleId);
-    return reviewModel.deleteReviewByReviewId(request.params.reviewId).then(dbResponse => {
+    return ReviewModel.deleteReviewByReviewId(request.params.reviewId).then(dbResponse => {
             response.status(200).send("Deleted")
         })
         .catch(err => {
@@ -111,7 +111,7 @@ router.delete('/:articleId/reviews/:reviewId', function(request, response) {
         // rating: rating
     // }
 
-    // return reviewModel.deleteReviewByReviewId(review)
+    // return ReviewModel.deleteReviewByReviewId(review)
     // .then(dbResponse => {
     //     response.status(200).send("Deleted")
     // })
@@ -123,9 +123,7 @@ router.delete('/:articleId/reviews/:reviewId', function(request, response) {
 // logged in user can update a review by review id
 // todo: add auth_middleware
 router.put('/:articleId/:reviewId', function(request, response) {
-    const articleId = request.params.articleId;
     const reviewId = request.params.reviewId;
-    const username = request.body.username;
     const description = request.body.description;
     const rating = request.body.rating;
     
@@ -134,13 +132,11 @@ router.put('/:articleId/:reviewId', function(request, response) {
     }
 
     const newReview = {
-        articleId: articleId,
-        username: username,
         description: description,
         rating: rating
     }
 
-    return reviewModel.updateReviewByReviewId(review, newReview)
+    return ReviewModel.updateReviewByReviewId(review, newReview)
         .then(dbResponse => {
             response.status(200).send(dbResponse);
         })
@@ -149,6 +145,34 @@ router.put('/:articleId/:reviewId', function(request, response) {
         })
     
 })
+
+// get all reviews for an article
+router.get('/:articleId/reviews', function(request, response) {
+    const articleId = request.params.articleId;
+    // const username = request.username;
+
+    return ReviewModel.getReviewsByArticleId(articleId)
+    .then(allReviews => {
+        response.status(200).send(allReviews)
+    })
+    .catch(err => {
+        response.status(400).send(error)
+    })
+});
+
+// get a review from a review id
+router.get('/:articleId/reviews/:reviewId', function(request, response) {
+    // const articleId = request.params.articleId;
+    const reviewId = request.params.reviewId;
+
+    return ReviewModel.getReviewByReviewId(reviewId)
+    .then(review => {
+        response.status(200).send(review)
+    })
+    .catch(err => {
+        response.status(400).send(error)
+    })
+});
 
 router.delete('/:articleId', function(request, response) {
     const articleId = request.params.articleId;

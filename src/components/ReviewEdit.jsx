@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 
-export default function ReviewEntry() {
+export default function ReviewEdit() {
     const [username, setUsername] = useState(undefined);
     const [description, setDescription] = useState(undefined);
     const [rating, setRating] = useState(undefined);
@@ -24,7 +24,7 @@ export default function ReviewEntry() {
         </div>)
     }
 
-    function editReview() {
+    function edit() {
         Axios.put('/articles/' + params.articleId + params.reviewId, {
             description: description,
             rating: rating
