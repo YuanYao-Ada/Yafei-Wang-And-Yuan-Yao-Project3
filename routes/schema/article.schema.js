@@ -6,7 +6,6 @@ const articleSchema = new Schema({
         required: true,
         type: String
     },
-    // image: String,
     description: {
         type: String
     },

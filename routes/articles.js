@@ -2,6 +2,7 @@ const express = require('express')
 const auth_middleware = require('./middleware/auth_middleware');
 
 const ArticleModel = require('./model/article.model')
+const reviewModel = require('./model/review.model')
 
 const router = express.Router()
 
@@ -62,6 +63,92 @@ router.post('/', auth_middleware, function(request, response) {
         response.send(400).send(err)
     })
 });
+
+// logged in user can create a new review
+// todo: add auth_middleware
+router.post('/:articleId/reviews', function(request, response) {
+    const articleId = request.params.articleId;
+    const username = request.body.username;
+    const description = request.body.description;
+    const rating = request.body.rating;
+
+    const review = {
+        articleId: articleId,
+        username: username,
+        description: description,
+        rating: rating
+    }
+
+    return reviewModel.createReview(review)
+    .then(dbResponse => {
+        response.status(200).send(dbResponse)
+    })
+    .catch(err => {
+        response.send(400).send(err)
+    })
+});
+
+// Logged in user can delete a review associated with an article id
+// todo: add auth_middleware
+router.delete('/:articleId/reviews/:reviewId', function(request, response) {
+    // ArticleModel.getArticleById(request.params.articleId);
+    return reviewModel.deleteReviewByReviewId(request.params.reviewId).then(dbResponse => {
+            response.status(200).send("Deleted")
+        })
+        .catch(err => {
+            response.sendStatus(400).send(err)
+        });
+    // const articleId = request.params.articleId;
+    // const reviewId = request.params.reviewId;
+    // const username = request.body.username;
+    // const description = request.body.description;
+    // const rating = request.body.rating;
+
+    // const review = {
+    //     _id: reviewId,
+        // username: username,
+        // description: description,
+        // rating: rating
+    // }
+
+    // return reviewModel.deleteReviewByReviewId(review)
+    // .then(dbResponse => {
+    //     response.status(200).send("Deleted")
+    // })
+    // .catch(err => {
+    //     response.sendStatus(400).send(err)
+    // })
+});
+
+// logged in user can update a review by review id
+// todo: add auth_middleware
+router.put('/:articleId/:reviewId', function(request, response) {
+    const articleId = request.params.articleId;
+    const reviewId = request.params.reviewId;
+    const username = request.body.username;
+    const description = request.body.description;
+    const rating = request.body.rating;
+    
+    const review = {
+        _id: reviewId,
+    }
+
+    const newReview = {
+        articleId: articleId,
+        username: username,
+        description: description,
+        rating: rating
+    }
+
+    return reviewModel.updateReviewByReviewId(review, newReview)
+        .then(dbResponse => {
+            response.status(200).send(dbResponse);
+        })
+        .catch(err => {
+            response.send(400).send(err);
+        })
+    
+})
 
 router.delete('/:articleId', function(request, response) {
     const articleId = request.params.articleId;

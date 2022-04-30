@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 const articleRouter = require('./routes/articles');
+// const reviewRouter = require('./routes/review');
 const userRouter = require('./routes/user');
 
 // app.engine('ejs', ejsMate)
@@ -25,6 +26,7 @@ app.use(cookieParser());
 
 app.use('/articles', articleRouter);
 app.use('/api/user', userRouter);
+// app.use('/reviews', reviewRouter);
 
 // app.get('*', function(req, res){
 //   res.sendFile(path.join(_dirname, 'build', 'index.html'));
