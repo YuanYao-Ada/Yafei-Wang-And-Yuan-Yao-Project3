@@ -11,9 +11,6 @@ export default function ReviewCard(props) {
                     <Card.Title>{review.username}</Card.Title>
                     <Card.Text>{review.description}</Card.Text>
                 </Card.Body>
-                <button>
-                    <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>View Review</a>
-                </button>
             </Card>
         </div>
     )

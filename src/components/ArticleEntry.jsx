@@ -60,10 +60,21 @@ export default function ArticleEntry() {
                     </a>
                     <ReviewCards reviews={reviews} />
                 </div>
-                
-
             </div>
         )
+    }  else if (username) {
+        return (
+            <div>
+                <ArticleCard article={article} />
+                <div>
+                    <a href={"/articles/" + article._id + "/createReview"}>
+                        <Button> Create a Review </Button>
+                    </a>
+                    <ReviewCards reviews={reviews} />
+                </div>
+            </div>
+        )
+
     } else {
         return (
             <ArticleCard article={article} />

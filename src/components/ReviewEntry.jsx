@@ -10,9 +10,10 @@ export default function ReviewEntry() {
     const [username, setUsername] = useState(undefined);
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId + '/reviews/' + params.reviewId)  
+        Axios.get('/articles/' + params.articleId + '/reviews/' + params.reviewId)
         .then(function(response) {
             setReview(response.data);
+            console.log(response);
         });
         Axios.get('/api/user/isLoggedIn')
         .then(response => setUsername(response.data.username))
@@ -26,12 +27,12 @@ export default function ReviewEntry() {
     }
 
     // todo: add delete review 
-    // function deleteReview() {
-    //     Axios.delete('/articles/' + params.articleId + '/reviews/' + params.reviewId)
-    //     .then(function(response) {
-    //         setReview('');
-    //     })
-    // }
+    function deleteReview() {
+        Axios.delete('/articles/' + params.articleId + '/reviews/' + params.reviewId)
+        .then(function(response) {
+            setReview('');
+        })
+    }
 
     if (username === review.username) {
         return (
@@ -40,14 +41,17 @@ export default function ReviewEntry() {
                 <a href={"/articles/" + params.articleId + "/edit/" + params.reviewId}>
                     <Button>Edit</Button>
                 </a>
-                {/* <a href={"/"}>
-                    <Button onClick={() => deleteArticle()}> Delete </Button>
-                </a> */}
+                <a href={"/articles/" + params.articleId}>
+                    <Button onClick={() => deleteReview() }>Delete</Button>
+                </a>
             </div>
         )
     } else {
         return (
-            <ReviewCard review={review} />
+            <div>
+                <ReviewCard review={review} />
+            </div>
+            
         )
     }
 }

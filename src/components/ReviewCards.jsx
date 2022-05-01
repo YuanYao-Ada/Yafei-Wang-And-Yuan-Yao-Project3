@@ -10,9 +10,9 @@ export default function ReviewCards(props) {
         reviewComponent.push(
         <div class='review-card'>
             <ReviewCard review={review} />
-            {/* <a href={"/articles/" + article._id}> */}
-              {/* <Button>View the article</Button> */}
-            {/* </a> */}
+            <button>
+                <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>View Review</a>
+            </button>
         </div>
       )
     }
@@ -21,7 +21,7 @@ export default function ReviewCards(props) {
 
     return (
         <div>
-            {reviewComponent}
+            {reviewComponent}        
         </div>
     )
 }

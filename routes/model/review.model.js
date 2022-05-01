@@ -15,7 +15,7 @@ function getReviewsByArticleId(articleId) {
 }
 
 function getReviewByReviewId(reviewId) {
-    return ReviewModel.find({
+    return ReviewModel.findOne({
         _id: reviewId
     }).exec();
 }

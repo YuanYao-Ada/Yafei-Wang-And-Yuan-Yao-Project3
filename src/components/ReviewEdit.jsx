@@ -10,7 +10,7 @@ export default function ReviewEdit() {
     const params = useParams();
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId + params.reviewId)
+        Axios.get('/articles/' + params.articleId + '/reviews/' + params.reviewId)
         .then(function(response) {
             setUsername(response.data.username);
             setDescription(response.data.description);
@@ -25,7 +25,7 @@ export default function ReviewEdit() {
     }
 
     function edit() {
-        Axios.put('/articles/' + params.articleId + params.reviewId, {
+        Axios.put('/articles/' + params.articleId + '/' + params.reviewId, {
             description: description,
             rating: rating
         })
@@ -55,10 +55,10 @@ export default function ReviewEdit() {
                     <Form.Control value={description}
                                   onChange={e => setDescription(e.target.value)} />
                 </Form.Group>
-                <a href={"/articles/" + params.articleId + params.reviewId}>
-                    <Button type="button" onClick={() => edit()}>Submit</Button>
+                <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
+                    <Button onClick={() => edit()}>Submit</Button>
                 </a>
-                <a href={"/articles/" + params.articleId}>
+                <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
                     <Button type="button">Cancel</Button>
                 </a>
             </Form>
