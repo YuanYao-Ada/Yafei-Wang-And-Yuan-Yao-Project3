@@ -49,14 +49,14 @@ export default function ArticleEntry() {
             <div>
                 <ArticleCard article={article} />
                 <a href={"/articles/edit/" + article._id}>
-                    <Button>Edit</Button>
+                    <Button size="sm" className="custom-btn">Edit</Button>
                 </a>
                 <a href={"/"}>
-                    <Button onClick={() => deleteArticle()}> Delete </Button>
+                    <Button size="sm" className="custom-btn" onClick={() => deleteArticle()}> Delete </Button>
                 </a>
-                <div>
+                <div className='mt-3'>
                     <a href={"/articles/" + article._id + "/createReview"}>
-                        <Button> Create a Review </Button>
+                        <Button size="sm" className="custom-btn"> Create a Review </Button>
                     </a>
                     <ReviewCards reviews={reviews} />
                 </div>
@@ -68,7 +68,7 @@ export default function ArticleEntry() {
                 <ArticleCard article={article} />
                 <div>
                     <a href={"/articles/" + article._id + "/createReview"}>
-                        <Button> Create a Review </Button>
+                        <Button size="sm" className="custom-btn"> Create a Review </Button>
                     </a>
                     <ReviewCards reviews={reviews} />
                 </div>

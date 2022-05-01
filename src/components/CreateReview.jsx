@@ -50,7 +50,7 @@ export default function CreateReview() {
                                 value={newDesInput}
                                 onChange={ e => setNewDesInput(e.target.value)} />
                 </Form.Group>
-                    <Button onClick={createNewReview} as={Link} to={'/articles/' + params.articleId} >
+                    <Button size="sm" className="custom-btn" onClick={createNewReview} as={Link} to={'/articles/' + params.articleId} >
                         Add new Review
                     </Button>
 

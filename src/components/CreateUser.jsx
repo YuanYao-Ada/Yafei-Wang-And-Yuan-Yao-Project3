@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router';
+import { Card, Button } from "react-bootstrap";
 
 export default function CreateUser(props) {
 
@@ -21,19 +22,33 @@ export default function CreateUser(props) {
     }
 
     return (
-        <div>
-            <h1>Create User</h1>
-            <h5>
+        <div className="article-card">
+            <Card className='w-auto'>
+                <Card.Header>Create an Account</Card.Header>
+                <Card.Body>
+                    <h4>Username</h4>
+                    <input value={username} onChange={e => setUsername(e.target.value)} />
+                    <h4>Password</h4>
+                    <input type='password' value={password} onChange={e => setPassword(e.target.value)} />                  
+                </Card.Body>
+            </Card>
+            <Button size="lg" className="custom-btn mt-3" onClick={()=>createNewUser()} >
+                    Create
+            </Button>
+            {/* <h1>Create User</h1> */}
+            {/* <h5>
                 Username
-            </h5>
-            <input value={username} onChange={e => setUsername(e.target.value)} />
-            <h5>
+            </h5> */}
+            {/* <input value={username} onChange={e => setUsername(e.target.value)} /> */}
+            {/* <h5>
                 Password
-            </h5>
-            <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-            <button onClick={()=>createNewUser()}>
-                Create User
-            </button>
+            </h5> */}
+            {/* <input type='password' value={password} onChange={e => setPassword(e.target.value)} /> */}
+            {/* <div>
+                <button onClick={()=>createNewUser()}>
+                    Create
+                </button>
+            </div> */}
         </div>
 
     )

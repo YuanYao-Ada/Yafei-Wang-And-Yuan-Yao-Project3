@@ -40,7 +40,7 @@ export default function CreateArticle() {
                                 value={newDesInput}
                                 onChange={ e => setNewDesInput(e.target.value)} />
                 </Form.Group>
-                <Button onClick={createNewArticle} as={Link} to='/' >
+                <Button size="sm" className="custom-btn" onClick={createNewArticle} as={Link} to='/' >
                     Add new Article
                 </Button>
             </Form>

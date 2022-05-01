@@ -10,9 +10,12 @@ export default function ReviewCards(props) {
         reviewComponent.push(
         <div class='review-card'>
             <ReviewCard review={review} />
-            <button>
+            {/* <button >
                 <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>View Review</a>
-            </button>
+            </button> */}
+            <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>
+              <Button size="sm" className="custom-btn">View Review</Button>
+            </a>
         </div>
       )
     }

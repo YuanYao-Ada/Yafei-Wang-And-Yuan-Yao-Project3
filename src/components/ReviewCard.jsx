@@ -4,9 +4,10 @@ import { Card } from "react-bootstrap";
 export default function ReviewCard(props) {
     const review = props.review;
     return (
-        <div className="review-card">
-            <Card>
-                <Card.Header>ID: {review._id}  Rating: {review.rating}</Card.Header>
+        <div className="article-card">
+            <Card className='w-auto'>
+                {/* <Card.Header>ID: {review._id}  Rating: {review.rating}</Card.Header> */}
+                <Card.Header>Review Rating: {review.rating}</Card.Header>
                 <Card.Body>
                     <Card.Title>{review.username}</Card.Title>
                     <Card.Text>{review.description}</Card.Text>
