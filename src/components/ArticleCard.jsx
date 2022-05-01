@@ -7,19 +7,12 @@ export default function ArticleCard(props) {
     return (
         <div className="article-card">
             <Card>
-                <Card.Header>ID: {article._id}  Created At: {article.createdAt}</Card.Header>
+                <Card.Header>Species: {article.species} | Name: {article.name} | Author: {article.username} | Created At: {article.createdAt} </Card.Header>
                 <Card.Body>
                     <Card.Title>{article.title}</Card.Title>
                     <Card.Text>{article.description}</Card.Text>
                 </Card.Body>
             </Card>
-            {/* <Card>
-            <Card.Header>ID: {review._id} </Card.Header>
-            <Card.Body>
-                    <Card.Title>{review.username} Rating: {review.rating}</Card.Title>
-                    <Card.Text>{review.description}</Card.Text>
-                </Card.Body>
-            </Card> */}
         </div>
     )
 }

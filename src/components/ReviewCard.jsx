@@ -6,9 +6,8 @@ export default function ReviewCard(props) {
     return (
         <div className="review-card">
             <Card>
-                <Card.Header>ID: {review._id}  Rating: {review.rating}</Card.Header>
                 <Card.Body>
-                    <Card.Title>{review.username}</Card.Title>
+                    <Card.Title>{review.username} | Rating: {review.rating} | CreatedAt: {review.createdAt} </Card.Title>
                     <Card.Text>{review.description}</Card.Text>
                 </Card.Body>
             </Card>

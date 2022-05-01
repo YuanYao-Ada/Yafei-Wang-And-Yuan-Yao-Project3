@@ -13,6 +13,8 @@ const articleSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    species: String,
+    name: String,
 }, {
     collection: 'article',
 })

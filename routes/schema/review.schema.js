@@ -6,11 +6,11 @@ const reviewSchema = new Schema({
 	},
     username: String,
     description: String,
-    rating: Number},
-	// createdAt: {
-	// 	type: Date,
-	// 	default: Date.now
-	// }},
+    rating: Number,
+	createdAt: {
+		type: Date,
+		default: Date.now
+	}},
     {
     collection: 'review',
     })

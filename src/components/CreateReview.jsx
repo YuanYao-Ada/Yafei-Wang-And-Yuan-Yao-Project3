@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import Axios from "axios";
-import { useNavigate } from 'react-router';
-import { Link } from "react-router-dom";
 import { useParams  } from "react-router-dom";
 
 export default function CreateReview() {
@@ -10,7 +8,6 @@ export default function CreateReview() {
     const [newDesInput, setNewDesInput] = useState('');
     const [username, setUsername] = useState(undefined);
     const params = useParams();
-    const navigate = useNavigate();
 
     function createNewReview() {
         if (!newRatingInput) return;
@@ -50,7 +47,7 @@ export default function CreateReview() {
                                 value={newDesInput}
                                 onChange={ e => setNewDesInput(e.target.value)} />
                 </Form.Group>
-                    <Button onClick={createNewReview} as={Link} to={'/articles/' + params.articleId} >
+                    <Button onClick={createNewReview} >
                         Add new Review
                     </Button>
 
