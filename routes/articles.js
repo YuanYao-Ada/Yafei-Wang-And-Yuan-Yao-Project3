@@ -44,6 +44,8 @@ router.post('/', auth_middleware, function(request, response) {
     const username = request.username;
     const title = request.body.title;
     const description = request.body.description;
+    const species = request.body.species;
+    const name = request.body.name;
 
     if (!title) {
         response.status(401).send("Missing title")
@@ -53,6 +55,8 @@ router.post('/', auth_middleware, function(request, response) {
         username: username,
         title: title,
         description: description,
+        species: species,
+        name: name,
     }
 
     return ArticleModel.createArticle(article)

@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import ReviewCard from "./ReviewCard";
 
 export default function ReviewCards(props) {
@@ -19,8 +18,6 @@ export default function ReviewCards(props) {
         </div>
       )
     }
-
-    reviewComponent.reverse();
 
     return (
         <div>

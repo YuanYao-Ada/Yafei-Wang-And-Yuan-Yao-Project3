@@ -1,9 +1,10 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ArticleCard from './ArticleCard';
 import ReviewCards from './ReviewCards';
 import { Button } from 'react-bootstrap';
+import CreateReview from './CreateReview';
 
 export default function ArticleEntry() {
     const [article, setArticle] = useState(undefined);
@@ -29,12 +30,16 @@ export default function ArticleEntry() {
         })
     }
     
-    useEffect(getReviews, []);
+    useEffect(getReviews);
 
     if (!article) {
-        return (<div>
-            Article loading ...
-        </div>)
+        return (
+            <div>
+                The article does not exist.
+                <Button as={Link} to='/'>
+                    Go back to home.
+                </Button>
+            </div>)
     }
     
     function deleteArticle() {
@@ -77,7 +82,10 @@ export default function ArticleEntry() {
 
     } else {
         return (
-            <ArticleCard article={article} />
+            <div>
+                <ArticleCard article={article} />
+                <ReviewCards reviews={reviews} />
+            </div>
         )
     }
 }
