@@ -11,7 +11,7 @@ export default function ArticleCards(props) {
         <div class='article-card'>
             <ArticleCard article={article} />
             <a href={"/articles/" + article._id}>
-              <Button>View the article</Button>
+              <Button size="sm" className="custom-btn">View the article</Button>
             </a>
         </div>
       )

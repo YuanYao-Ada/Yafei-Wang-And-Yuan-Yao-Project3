@@ -36,7 +36,7 @@ export default function ArticleEntry() {
         return (
             <div>
                 The article does not exist.
-                <Button as={Link} to='/'>
+                <Button size="sm" className="custom-btn" as={Link} to='/'>
                     Go back to home.
                 </Button>
             </div>)
@@ -54,9 +54,10 @@ export default function ArticleEntry() {
             <div>
                 <ArticleCard article={article} />
                 <a href={"/articles/edit/" + article._id}>
-                    <Button>Edit</Button>
+                    <Button size="sm" className="custom-btn">Edit</Button>
                 </a>
-                <Button onClick={deleteArticle} as={Link} to="/"> Delete </Button>
+                {' '}
+                <Button size="sm" className="custom-btn" onClick={deleteArticle} as={Link} to="/"> Delete </Button>
                 <div>
                     <CreateReview />
                     <ReviewCards reviews={reviews} />

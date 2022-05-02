@@ -56,10 +56,10 @@ export default function ReviewEdit() {
                                   onChange={e => setDescription(e.target.value)} />
                 </Form.Group>
                 <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
-                    <Button onClick={() => edit()}>Submit</Button>
+                    <Button size="sm" className="custom-btn" onClick={() => edit()}>Submit</Button>
                 </a>
                 <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
-                    <Button type="button">Cancel</Button>
+                    <Button size="sm" className="custom-btn" type="button">Cancel</Button>
                 </a>
             </Form>
         </div>

@@ -67,7 +67,7 @@ export default function CreateArticle() {
                                 value={newName}
                                 onChange={ e => setNewName(e.target.value)} />
                 </Form.Group>
-                <Button onClick={createNewArticle} as={Link} to={'/'} >
+                <Button size="sm" className="custom-btn" onClick={createNewArticle} as={Link} to={'/'} >
                     Add new Article
                 </Button>
             </Form>

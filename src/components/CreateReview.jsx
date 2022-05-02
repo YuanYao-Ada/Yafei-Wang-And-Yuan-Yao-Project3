@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import Axios from "axios";
 import { useParams  } from "react-router-dom";
 
@@ -34,7 +34,7 @@ export default function CreateReview() {
 
     return (
         <div>
-            <Form>
+            <Form className="article-card ">
                 <Form.Group className="mb-3">
                     <Form.Label>Rating</Form.Label>
                     <Form.Control placeholder="Enter the rating" 
@@ -47,10 +47,9 @@ export default function CreateReview() {
                                 value={newDesInput}
                                 onChange={ e => setNewDesInput(e.target.value)} />
                 </Form.Group>
-                    <Button onClick={createNewReview} >
+                <Button size="sm" className="custom-btn" onClick={createNewReview} >
                         Add new Review
-                    </Button>
-
+                </Button>
             </Form>
         </div>
     );

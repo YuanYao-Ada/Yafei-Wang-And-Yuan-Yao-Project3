@@ -12,3 +12,11 @@ Form {
 a > Button{
   margin-left: 5%;
 }
+
+.bg-myNav {
+  background-color: #E8CEBF;
+}
+
+.custom-btn {
+  background-color: #5072A7 !important;
+}

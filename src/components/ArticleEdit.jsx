@@ -49,10 +49,10 @@ export default function ArticleEntry() {
                                   onChange={e => setDescription(e.target.value)} />
                 </Form.Group>
                 <a href={"/articles/" + params.articleId}>
-                    <Button type="button" onClick={() => editArticle()}>Submit</Button>
+                    <Button size="sm" className="custom-btn" type="button" onClick={() => editArticle()}>Submit</Button>
                 </a>
                 <a href={"/articles/" + params.articleId}>
-                    <Button type="button">Cancel</Button>
+                    <Button size="sm" variant='secondary' type="button">Cancel</Button>
                 </a>
             </Form>
         </div>

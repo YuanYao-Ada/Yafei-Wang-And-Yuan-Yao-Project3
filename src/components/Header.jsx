@@ -27,27 +27,27 @@ export default function Header() {
 
     if (!username) {
         return (
-            <Navbar>
+            <Navbar sticky="top" expand="sm" bg="myNav">
                 <Navbar.Brand as={Link} to="/">
                     Articles
                 </Navbar.Brand>
                 <ButtonGroup>
-                    <Button variant='secondary' as={Link} to='/login'>Login</Button>
-                    <Button variant='secondary' as={Link} to='/createUser'>Sign Up</Button>
+                    <Button size="sm" className="custom-btn" variant='secondary' as={Link} to='/login'>Login</Button>
+                    <Button size="sm" className="custom-btn" variant='secondary' as={Link} to='/createUser'>Sign Up</Button>
                 </ButtonGroup>
 
             </Navbar>
         )
     } else {
         return (
-            <Navbar expand="sm" bg="light" variant='light' className='mb-3'>
+            <Navbar sticky="top" expand="sm" bg="myNav" variant='light' className='mb-3'>
                 <Navbar.Brand as={Link} to="/">
                     Articles
                 </Navbar.Brand>
                 <Form inline className='mx-3'>
                     <span>{username}  </span>
-                    <Button as={Link} to="/createArticle">Create Article</Button>
-                    <Button variant='secondary' onClick={() => logout()}>Logout</Button>
+                    <Button size="sm" className="custom-btn" as={Link} to="/createArticle">Create Article</Button>{' '}
+                    <Button size="sm" variant='secondary' onClick={() => logout()}>Logout</Button>
                 </Form>
             </Navbar>  
         )

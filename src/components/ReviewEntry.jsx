@@ -39,10 +39,10 @@ export default function ReviewEntry() {
             <div>
                 <ReviewCard review={review} />
                 <a href={"/articles/" + params.articleId + "/edit/" + params.reviewId}>
-                    <Button>Edit</Button>
+                    <Button size="sm" className="custom-btn">Edit</Button>
                 </a>
                 <a href={"/articles/" + params.articleId}>
-                    <Button onClick={() => deleteReview() }>Delete</Button>
+                    <Button size="sm" className="custom-btn" onClick={() => deleteReview() }>Delete</Button>
                 </a>
             </div>
         )
