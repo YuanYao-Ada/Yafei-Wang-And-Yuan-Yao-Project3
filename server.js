@@ -6,8 +6,7 @@
 // 4. When a user submits a new entry, they should be redirected to the entry page that they just created.
 // [Finished] 5. When you are on the entry page and you are logged in, there should be a form field below the entry that allows users to create a new review.  When the user submits the review, the page should NOT refresh, but rather the page should dynamically refetch all the existing reviews.
 // [Finished] 6.  Reviews should be sorted by oldest on top
-// 7. When a user is logged in, they should see an additional button to edit or delete entries and reviews. This button should be visible ONLY to the user that created the entry or review. 
-// 8. If a entry is deleted, all associated reviews should be deleted as well.  If you try to access a page with a deleted entry (say you stored the URL somewhere) you should be redirected back to the home page
+// [Finished] 7. When a user is logged in, they should see an additional button to edit or delete entries and reviews. This button should be visible ONLY to the user that created the entry or review. 
 
 const express = require('express');
 const path = require('path');

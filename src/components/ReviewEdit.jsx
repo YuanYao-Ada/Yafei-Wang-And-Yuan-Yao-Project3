@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 
 export default function ReviewEdit() {
@@ -17,12 +17,6 @@ export default function ReviewEdit() {
             setRating(response.data.rating);
         })
     }, []);
-
-    if (!username || !description || !rating) {
-        return (<div>
-            Review loading ...
-        </div>)
-    }
 
     function edit() {
         Axios.put('/articles/' + params.articleId + '/' + params.reviewId, {
@@ -41,11 +35,6 @@ export default function ReviewEdit() {
         <div>
             <Form>
                 <Form.Group className="mb-3">
-                    <Form.Label>User</Form.Label>
-                    <Form.Control value={username}
-                                  onChange={e => setUsername(e.target.value)} />
-                </Form.Group>
-                <Form.Group className="mb-3">
                     <Form.Label>Rating</Form.Label>
                     <Form.Control value={rating}
                                   onChange={e => setRating(e.target.value)} />
@@ -55,12 +44,8 @@ export default function ReviewEdit() {
                     <Form.Control value={description}
                                   onChange={e => setDescription(e.target.value)} />
                 </Form.Group>
-                <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
-                    <Button size="sm" className="custom-btn" onClick={() => edit()}>Submit</Button>
-                </a>
-                <a href={"/articles/" + params.articleId + '/reviews/' + params.reviewId}>
-                    <Button size="sm" className="custom-btn" type="button">Cancel</Button>
-                </a>
+                <Button size="sm" className="custom-btn" onClick={() => edit()} as={Link} to={"/articles/" + params.articleId}>Submit</Button>
+                <Button size="sm" className="custom-btn" type="button" as={Link} to={"/articles/" + params.articleId}>Cancel</Button>
             </Form>
         </div>
     )

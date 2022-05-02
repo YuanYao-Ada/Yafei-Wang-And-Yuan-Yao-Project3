@@ -1,27 +1,49 @@
-import React from "react";
+import React,  {useState, useEffect } from "react";
 import ReviewCard from "./ReviewCard";
 import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function ReviewCards(props) {
     const reviews = props.reviews;
     const reviewComponent = [];
+    const [username, setUsername] = useState(undefined);
+    const params = useParams();
+
+    useEffect(()=> {
+        Axios.get('/api/user/isLoggedIn')
+        .then(response => setUsername(response.data.username))
+        .catch(error => console.log("User is not logged in"));
+    }, []);
+
+    function deleteReview(review) {
+        Axios.delete('/articles/' + params.articleId + '/reviews/' + review._id)
+        .then(function(response) {
+        })
+    }
 
     for (let review of reviews) {
-        reviewComponent.push(
-        <div class='review-card'>
-            <ReviewCard review={review} />
-            <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>
-                <Button size="sm" className="custom-btn">View Review</Button>
-            </a>
-            {/* <button>
-                <a href={"/articles/" + review.articleId + "/reviews/" + review._id}>View Review</a>
-            </button> */}
-        </div>
-      )
+        if (review.username === username) {
+            reviewComponent.push(
+                <div class='review-card'>
+                <ReviewCard review={review} />
+                <Button size="sm" className="custom-btn" as={Link} to={"/articles/" + params.articleId + "/edit/" + review._id}>Edit</Button>
+                <Button size="sm" className="custom-btn" onClick={() => deleteReview(review)} as={Link} to={"/articles/" + params.articleId}>Delete</Button>
+            </div>
+            )
+        } else {
+            reviewComponent.push(
+                <div class='review-card'>
+                <ReviewCard review={review} />
+            </div>
+            )
+        }
     }
 
     return (
         <div>
+            <p className="review-para">reviews:</p>
             {reviewComponent}        
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import Axios from "axios";
 import { useNavigate } from 'react-router';
@@ -9,34 +9,24 @@ export default function CreateArticle() {
     const [newDesInput, setNewDesInput] = useState('');
     const [newSpecies, setNewSpecies] = useState('');
     const [newName, setNewName] = useState('');
-    const [article, setArticle] = useState('');
+    const navigate = useNavigate();
 
     function createNewArticle() {
         if (!newTitleInput) return;
 
         Axios.post('/articles', {
-        title: newTitleInput,
-        description: newDesInput,
-        species: newSpecies,
-        name: newName,
-        })
+            title: newTitleInput,
+            description: newDesInput,
+            species: newSpecies,
+            name: newName,
+            })
         .then(response => {
-        setArticle(response.data);
-        console.log("article is: " +    article)
-        setNewTitleInput('');
-        setNewDesInput('');
-        getArticle();
-        console.log("!!article is: " + article._id)
+            navigate('/articles/' + response.data._id)
+            setNewTitleInput('');
+            setNewDesInput('');
         })
         .catch(function(err) {
-        console.log(err);
-        })
-    }
-
-    function getArticle() {
-        Axios.get("/articles")
-        .then(function(response) {
-          setArticle(response.data[response.data.length-1]);
+            console.log(err);
         })
     }
 

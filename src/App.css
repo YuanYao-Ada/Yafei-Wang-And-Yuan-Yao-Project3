@@ -20,3 +20,9 @@ a > Button{
 .custom-btn {
   background-color: #5072A7 !important;
 }
+
+.review-para {
+  margin: 5%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
