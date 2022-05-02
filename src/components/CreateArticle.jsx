@@ -14,14 +14,14 @@ export default function CreateArticle() {
     function createNewArticle() {
         if (!newTitleInput) return;
 
-        Axios.post('/articles', {
+        Axios.post('/api/articles', {
             title: newTitleInput,
             description: newDesInput,
             species: newSpecies,
             name: newName,
             })
         .then(response => {
-            navigate('/articles/' + response.data._id)
+            navigate('/api/articles/' + response.data._id)
             setNewTitleInput('');
             setNewDesInput('');
         })

@@ -12,7 +12,7 @@ export default function CreateReview() {
     function createNewReview() {
         if (!newRatingInput) return;
 
-        Axios.post('/articles/' + params.articleId + '/reviews', {
+        Axios.post('/api/articles/' + params.articleId + '/reviews', {
             username: username,
             rating: newRatingInput,
             description: newDesInput,

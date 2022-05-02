@@ -12,7 +12,7 @@ export default function ArticleEntry() {
     const [username, setUsername] = useState(undefined);
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId)
+        Axios.get('/api/articles/' + params.articleId)
         .then(function(response) {
             setArticle(response.data);
         });
@@ -24,7 +24,7 @@ export default function ArticleEntry() {
     const [reviews, setReviews] = useState('');
     
     function getReviews() {
-        Axios.get("/articles/" + params.articleId + '/reviews')
+        Axios.get("/api/articles/" + params.articleId + '/reviews')
         .then(function(response) {
             setReviews(response.data);
         })
@@ -43,7 +43,7 @@ export default function ArticleEntry() {
     }
     
     function deleteArticle() {
-        Axios.delete('/articles/' + params.articleId)
+        Axios.delete('/api/articles/' + params.articleId)
         .then(function(response) {
             setArticle('');
         })

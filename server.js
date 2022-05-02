@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/articles', articleRouter);
+app.use('/api/articles', articleRouter);
 app.use('/api/user', userRouter);
 
 const cors = require('cors');

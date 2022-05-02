@@ -7,7 +7,7 @@ function App() {
   const [articles, setArticles] = useState('');
 
   function getArticles() {
-    Axios.get("/articles")
+    Axios.get("/api/articles")
     .then(function(response) {
       setArticles(response.data);
     })

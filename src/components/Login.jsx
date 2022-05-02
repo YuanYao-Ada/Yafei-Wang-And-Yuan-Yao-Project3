@@ -32,17 +32,6 @@ export default function Login(props) {
             <Button size="lg" className="custom-btn mt-3" onClick={()=>createNewUser()} >
                     Login
             </Button>
-            {/* <h5>
-                Username
-            </h5>
-            <input value={username} onChange={e => setUsername(e.target.value)} />
-            <h5>
-                Password
-            </h5>
-            <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-            <button onClick={createNewUser}>
-                Login
-            </button> */}
         </div>
 
     )

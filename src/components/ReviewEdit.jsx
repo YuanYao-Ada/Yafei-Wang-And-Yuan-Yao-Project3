@@ -10,7 +10,7 @@ export default function ReviewEdit() {
     const params = useParams();
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId + '/reviews/' + params.reviewId)
+        Axios.get('/api/articles/' + params.articleId + '/reviews/' + params.reviewId)
         .then(function(response) {
             setUsername(response.data.username);
             setDescription(response.data.description);
@@ -19,7 +19,7 @@ export default function ReviewEdit() {
     }, []);
 
     function edit() {
-        Axios.put('/articles/' + params.articleId + '/' + params.reviewId, {
+        Axios.put('/api/articles/' + params.articleId + '/' + params.reviewId, {
             description: description,
             rating: rating
         })

@@ -18,7 +18,7 @@ export default function ReviewCards(props) {
     }, []);
 
     function deleteReview(review) {
-        Axios.delete('/articles/' + params.articleId + '/reviews/' + review._id)
+        Axios.delete('/api/articles/' + params.articleId + '/reviews/' + review._id)
         .then(function(response) {
         })
     }

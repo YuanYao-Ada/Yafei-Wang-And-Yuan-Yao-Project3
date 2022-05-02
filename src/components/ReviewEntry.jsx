@@ -10,7 +10,7 @@ export default function ReviewEntry() {
     const [username, setUsername] = useState(undefined);
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId + '/reviews/' + params.reviewId)
+        Axios.get('/api/articles/' + params.articleId + '/reviews/' + params.reviewId)
         .then(function(response) {
             setReview(response.data);
             console.log(response);
@@ -28,7 +28,7 @@ export default function ReviewEntry() {
 
     // todo: add delete review 
     function deleteReview() {
-        Axios.delete('/articles/' + params.articleId + '/reviews/' + params.reviewId)
+        Axios.delete('/api/articles/' + params.articleId + '/reviews/' + params.reviewId)
         .then(function(response) {
             setReview('');
         })

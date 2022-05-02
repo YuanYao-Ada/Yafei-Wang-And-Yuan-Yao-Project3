@@ -9,7 +9,7 @@ export default function ArticleEntry() {
     const params = useParams();
 
     useEffect(()=> {
-        Axios.get('/articles/' + params.articleId)
+        Axios.get('/api/articles/' + params.articleId)
         .then(function(response) {
             setTitle(response.data.title);
             setDescription(response.data.description);
@@ -23,7 +23,7 @@ export default function ArticleEntry() {
     }
 
     function editArticle() {
-        Axios.put('/articles/' + params.articleId, {
+        Axios.put('/api/articles/' + params.articleId, {
             title: title,
             description: description,
         })
