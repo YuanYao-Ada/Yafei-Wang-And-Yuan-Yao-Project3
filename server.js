@@ -34,6 +34,6 @@ app.use(cookieParser());
 app.use('/articles', articleRouter);
 app.use('/api/user', userRouter);
 
-app.listen(8000, function() {
+app.listen(process.env.PORT || 8000, function() {
     console.log("Starting server");
 })
