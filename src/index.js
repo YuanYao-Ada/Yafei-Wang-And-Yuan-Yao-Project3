@@ -21,7 +21,7 @@ root.render(
       <Header />
       <Routes>
         <Route path={"/"} element={<App />} />
-        <Route path={"/articles/:articleId"} element={<ArticleEntry />} />
+        <Route path={"/Farticles/:articleId"} element={<ArticleEntry />} />
         <Route path={"/articles/edit/:articleId"} element={<ArticleEdit />} />
         <Route path={"/login"} element={<Login />} />
         <Route path={"/createUser"} element={<CreateUser />} />

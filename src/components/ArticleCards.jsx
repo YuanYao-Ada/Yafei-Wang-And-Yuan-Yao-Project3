@@ -10,7 +10,7 @@ export default function ArticleCards(props) {
       articleComponent.push(
         <div class='article-card'>
             <ArticleCard article={article} />
-            <a href={"/articles/" + article._id}>
+            <a href={"/Farticles/" + article._id}>
               <Button size="sm" className="custom-btn">View the article</Button>
             </a>
         </div>
