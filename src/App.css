@@ -18,11 +18,22 @@ a > Button{
 }
 
 .custom-btn {
-  background-color: #5072A7 !important;
+  background-color: #6c757d!important;
+  border-color: #6c757d!important;
 }
 
 .review-para {
+  text-align: center;
+  font-size: x-large;
   margin: 5%;
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+.review-btn {
+  margin-left: 5%;
+}
+
+span {
+ font-weight: bold; 
 }

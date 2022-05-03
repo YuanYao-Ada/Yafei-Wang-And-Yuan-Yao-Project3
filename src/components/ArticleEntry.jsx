@@ -52,7 +52,6 @@ export default function ArticleEntry() {
     if (username === article.username) {
         return (
             <div>
-                <Button as={Link} to='/'>Back to All Articles</Button>
                 <ArticleCard article={article} />
                 <a href={"/articles/edit/" + article._id}>
                     <Button size="sm" className="custom-btn">Edit</Button>
@@ -68,7 +67,6 @@ export default function ArticleEntry() {
     }  else if (username) {
         return (
             <div>
-                <Button as={Link} to='/'>Back to All Articles</Button>
                 <ArticleCard article={article} />
                 <div>
                     <CreateReview />
@@ -80,7 +78,6 @@ export default function ArticleEntry() {
     } else {
         return (
             <div>
-                <Button as={Link} to='/'>Back to All Articles</Button>
                 <ArticleCard article={article} />
                 <ReviewCards reviews={reviews} />
             </div>

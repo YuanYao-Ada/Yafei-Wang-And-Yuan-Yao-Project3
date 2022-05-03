@@ -7,7 +7,8 @@ export default function ArticleCard(props) {
     return (
         <div className="article-card">
             <Card className='w-auto'>
-                <Card.Header>Species: {article.species} | Name: {article.name} | Author: {article.username} | Created At: {article.createdAt} </Card.Header>
+                <Card.Header>
+                    <span>Species: </span> {article.species} | <span>Name: </span> {article.name} | <span>Author: </span> {article.username} | <span>Created At: </span>{article.createdAt} </Card.Header>
                 <Card.Body>
                     <Card.Title>{article.title}</Card.Title>
                     <Card.Text>{article.description}</Card.Text>

@@ -28,7 +28,7 @@ export default function ReviewCards(props) {
             reviewComponent.push(
                 <div class='review-card'>
                 <ReviewCard review={review} />
-                <Button size="sm" className="custom-btn" as={Link} to={"/articles/" + params.articleId + "/edit/" + review._id}>Edit</Button>
+                <Button size="sm" className="custom-btn review-btn" as={Link} to={"/articles/" + params.articleId + "/edit/" + review._id}>Edit</Button>{' '}
                 <Button size="sm" className="custom-btn" onClick={() => deleteReview(review)} as={Link} to={"/articles/" + params.articleId}>Delete</Button>
             </div>
             )
@@ -43,7 +43,7 @@ export default function ReviewCards(props) {
 
     return (
         <div>
-            <p className="review-para">reviews:</p>
+            <p className="review-para">Reviews</p>
             {reviewComponent}        
         </div>
     )
