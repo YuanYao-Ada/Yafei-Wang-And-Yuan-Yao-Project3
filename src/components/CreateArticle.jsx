@@ -21,7 +21,7 @@ export default function CreateArticle() {
             name: newName,
             })
         .then(response => {
-            navigate('/api/articles/' + response.data._id)
+            navigate('/articles/' + response.data._id)
             setNewTitleInput('');
             setNewDesInput('');
         })

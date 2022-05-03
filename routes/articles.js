@@ -68,8 +68,6 @@ router.post('/', auth_middleware, function(request, response) {
     })
 });
 
-// logged in user can create a new review
-// todo: add auth_middleware
 router.post('/:articleId/reviews', function(request, response) {
     const articleId = request.params.articleId;
     const username = request.body.username;
@@ -92,9 +90,7 @@ router.post('/:articleId/reviews', function(request, response) {
     })
 });
 
-// Logged in user can delete a review associated with an article id
-// todo: add auth_middleware
-router.delete('/:articleId/reviews/:reviewId', function(request, response) {
+router.delete('/:articleId/reviews/:reviewId', auth_middleware, function(request, response) {
     // ArticleModel.getArticleById(request.params.articleId);
     return ReviewModel.deleteReviewByReviewId(request.params.reviewId).then(dbResponse => {
             response.status(200).send("Deleted")
@@ -102,26 +98,6 @@ router.delete('/:articleId/reviews/:reviewId', function(request, response) {
         .catch(err => {
             response.sendStatus(400).send(err)
         });
-    // const articleId = request.params.articleId;
-    // const reviewId = request.params.reviewId;
-    // const username = request.body.username;
-    // const description = request.body.description;
-    // const rating = request.body.rating;
-
-    // const review = {
-    //     _id: reviewId,
-        // username: username,
-        // description: description,
-        // rating: rating
-    // }
-
-    // return ReviewModel.deleteReviewByReviewId(review)
-    // .then(dbResponse => {
-    //     response.status(200).send("Deleted")
-    // })
-    // .catch(err => {
-    //     response.sendStatus(400).send(err)
-    // })
 });
 
 // logged in user can update a review by review id
@@ -178,7 +154,7 @@ router.get('/:articleId/reviews/:reviewId', function(request, response) {
     })
 });
 
-router.delete('/:articleId', function(request, response) {
+router.delete('/:articleId', auth_middleware, function(request, response) {
     const articleId = request.params.articleId;
     const article = {
         _id: articleId,

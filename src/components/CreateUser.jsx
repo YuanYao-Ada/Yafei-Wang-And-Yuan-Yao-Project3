@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router';
 import { Card, Button } from "react-bootstrap";
 
 export default function CreateUser(props) {
-
-
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -36,9 +34,5 @@ export default function CreateUser(props) {
                     Create
             </Button>
         </div>
-        
-
     )
-
-
 } 
